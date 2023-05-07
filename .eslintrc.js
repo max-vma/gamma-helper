@@ -16,6 +16,13 @@ module.exports = {
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "prettier/prettier": [
+      "off",
+      {
+        endOfLine: "auto",
+      },
+    ],
+    'vue/no-unused-components': "warn"
   },
   overrides: [
     {
