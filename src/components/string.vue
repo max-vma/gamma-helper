@@ -47,6 +47,6 @@ export default defineComponent({
     display: flex;
     width: 100%;
     height: 40px;
-    background-color: #ecf0f1;
+    background-color: #fff;
 }
 </style>

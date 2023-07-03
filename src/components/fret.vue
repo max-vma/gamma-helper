@@ -2,7 +2,7 @@
     <div class="neck__fret">
         <div :class="{
           'neck__circle': true,
-          'neck__circle--active': true
+        //   'neck__circle--active': true
           }">
             {{ note.noteName }}
         </div>
@@ -35,24 +35,24 @@ export default defineComponent({
         font-weight: bold;
         font-size: 16;
         font-family: Arial, sans-serif;
-        position: relative;
         z-index: 2;
         display: flex;
         justify-content: center;
         align-items: center;
         user-select: none;
-        &--active{
+        background-color: #bbbbbb;
         position: absolute;
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         border-radius: 50%;
-        background-color: #95a5a6;
+        &--active{
+            background-color: #ff6c5c;
         }
         &--red{
-        background-color:#e74c3c;
+            background-color:#ff6c5c;
         } 
     }
     &__fret{
@@ -72,7 +72,7 @@ export default defineComponent({
         right: 0;
         height: 100%;
         width: 5px;
-        background-color: #bdc3c7;
+        background-color: #7b7b7b;
         border-radius: 2px;
 
         }
@@ -83,9 +83,9 @@ export default defineComponent({
         transform: translate(0,-50%);
         left: 0;
         z-index: 1;
-        height: 4px;
+        height: 3px;
         width: 100%;
-        background-color: #e67e22;
+        background-color: #cbcbcb;
         }
     }
 }
