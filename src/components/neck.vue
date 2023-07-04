@@ -1,12 +1,15 @@
 <template>
   <div class="neck">
-    <neck-string :frets-count="frets" :tuning-note="note" v-for="(note, index) in tuning" :key="index"/>
+    <neck-string  :tuning-note="note" v-for="(note, index) in tuning" :key="index"/>
   </div>
 </template>
 
 <script lang="ts">
+import { MusicalScale } from "@/consts/musicalScales";
+import Notes from "@/consts/notes";
+import { ScaleNames } from "@/consts/scales";
 import { GUITAR_STANDART_E } from "@/consts/tunings";
-import { defineComponent } from "vue"
+import { defineComponent, ref } from "vue";
 import NeckString from './string.vue';
 
 export default defineComponent({
@@ -14,12 +17,13 @@ export default defineComponent({
     components: {
       NeckString
     },
-    data: () => ({
-        frets: 12,
-        tuning: GUITAR_STANDART_E,
-    }),
-    methods: {
-    }
+    setup() {
+        const tuning = ref(GUITAR_STANDART_E);
+        const scale = ref(new MusicalScale(Notes.C, ScaleNames.NaturalMinor))
+        
+
+        return { tuning, scale }
+    },
 })
 </script>
 

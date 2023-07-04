@@ -1,15 +1,18 @@
 <template>
   <div class="neck__string" >
-    <neck-fret :note="note" :fret-index="id" v-for="(note, id) in frets" :key="id"/>
+    <neck-fret :is-active="isActiveNote(note)" v-for="(note, id) in fretsNotes" :key="id">
+        {{ note.noteName }}
+    </neck-fret>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 
 import NeckFret from './fret.vue';
 import Note from '@/libs/Note';
-import Notes from '@/consts/notes';
+import { useStore } from 'vuex';
+import { IState } from '@/store';
 
 export default defineComponent({
     name: 'NeckString',
@@ -18,27 +21,30 @@ export default defineComponent({
             type: Object as PropType<Note>,
             required: true,
         },
-        fretsCount:{
-            type: Number,
-            required: true,
-            default: 12
-        }
     },
     components: {
       NeckFret
     },
-    computed: {
-        frets(): Note[]{
+    setup(props){
+        const store = useStore<IState>();
+        const { activeScale, fretsCount } = store.state;
+        const fretsNotes = computed(():Note[] => {
             const notes: Note[] = [];
-            for (let index = 0; index < this.fretsCount + 1; index++) {
-                if(notes.length === 0) notes.push(this.tuningNote);
+            for (let index = 0; index < fretsCount + 1; index++) {
+                if(notes.length === 0) notes.push(props.tuningNote);
                 else {
                     notes.push(notes[index - 1].getNextSemitoneNote());
                 }
             }
             return notes
-        }
-    }
+        })
+
+
+        const isActiveNote = (note: Note): boolean => activeScale.has(note);
+
+
+        return { fretsNotes, isActiveNote }
+    },
 })
 </script>
 

@@ -3,17 +3,18 @@ enum ScaleNames {
 }
 
 enum ToneStep{
-    whole = 'whole',
-    half = 'half',
+    T = 'tone',
+    H = 'half-tone',
 }
 
-const { whole, half } = ToneStep;
+const { T, H } = ToneStep;
 
 type TScales = {
     [key in ScaleNames]: ToneStep[]
 };
 
 const Scales: TScales = {
-    [ScaleNames.NaturalMinor]: [whole, half, whole, whole, half, whole, whole]
+    [ScaleNames.NaturalMinor]: [T, H, T, H, T, H, T]
 }
 
+export {ScaleNames, ToneStep, TScales, Scales}

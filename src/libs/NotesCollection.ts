@@ -13,7 +13,11 @@ export default class NotesCollection {
     public set notes (notes: Note[]) {
         this.collection = [...notes];
     }
-
+    public has(note: Note): boolean{
+        return this.collection.some(n => {
+            return n.note === note.note
+        })
+    }
     public push(note: Note): void{
         this.collection.push(note)
     }

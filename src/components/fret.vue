@@ -2,28 +2,28 @@
     <div class="neck__fret">
         <div :class="{
           'neck__circle': true,
-        //   'neck__circle--active': true
+          'neck__circle--active': active
           }">
-            {{ note.noteName }}
+            <slot></slot>
         </div>
       </div>
 </template>
 
 <script lang="ts">
 import Note from "@/libs/Note"
-import { defineComponent, PropType } from "vue"
+import { defineComponent, PropType, toRefs } from "vue"
 
 export default defineComponent({
     name: 'NeckFret',
-    props:{
-        note: {
-            type: Object as PropType<Note>,
-            required: true
-        },
-        fretIndex: {
-            type: Number,
-            required: true
+    props: {
+        isActive: {
+            type: Boolean
         }
+    },
+    setup(props){
+        const { isActive } = toRefs(props);
+        console.log(isActive)
+        return {active: isActive.value};
     }
 })
 </script>

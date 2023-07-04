@@ -1,6 +1,8 @@
 import Note from "@/libs/Note";
 import Notes, { Octaves } from "./notes";
 
+type Tuning = Note[];
+
 const GUITAR_STANDART_E = [
     new Note(Notes.E, Octaves.Four),
     new Note(Notes.B, Octaves.Three),
@@ -11,4 +13,4 @@ const GUITAR_STANDART_E = [
 ];
 
 
-export {GUITAR_STANDART_E}
+export {GUITAR_STANDART_E, Tuning}

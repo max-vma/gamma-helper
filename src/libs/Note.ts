@@ -6,7 +6,7 @@ export default class Note {
     public _octave: Octaves | null = null;
     public noteName = '';
 
-    constructor(note: Notes, octave: Octaves | null){
+    constructor(note: Notes, octave: Octaves | null = null){
         this.note = note;
         this.octave = octave;
     }
@@ -37,7 +37,7 @@ export default class Note {
 
         const noteNames = Object.keys(Notes).filter(key => isNaN(Number(key))) as Array<keyof typeof Notes>;
         const noteName = noteNames.find(name => Notes[name] === noteNumber);
-        return `${noteName}${octave}`;
+        return `${noteName}${octave ? octave : ''}`;
       }
 
     public getNextSemitoneNote(): Note{
