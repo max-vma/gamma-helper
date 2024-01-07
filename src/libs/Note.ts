@@ -30,6 +30,14 @@ export default class Note {
     }
 
     public upOnSemitones(semiTones: number): Note{
+        let currentNoteIndex: number = (this.note as number + semiTones);
+        if(currentNoteIndex > NOTES_LAST_INDEX) currentNoteIndex = currentNoteIndex - NOTES_LAST_INDEX - 1;
+        
+        const a = Notes[currentNoteIndex];
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        this.note = Notes[a];
+        console.log(a);
         return this;
     }
 

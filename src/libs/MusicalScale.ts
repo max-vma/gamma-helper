@@ -1,7 +1,7 @@
 import Note from "@/libs/Note";
 import NotesCollection from "@/libs/NotesCollection";
-import Notes from "./notes";
-import { ScaleNames, Scales } from "./scales";
+import Notes from "../consts/notes";
+import { ScaleNames, Scales } from "../consts/scales";
 
 export class MusicalScale extends NotesCollection{
     public _tonic: Note = new Note(Notes.C);
@@ -17,11 +17,12 @@ export class MusicalScale extends NotesCollection{
 
     private createScale(){
         const steps = Scales[this.scale]
-
         this.collection.push(this.tonic)
-        // steps.forEach(toneStep => {
-
-        // })
+        const currentNote = new Note(this.tonic.note);
+        steps.forEach((s: number) => {
+            const uppedNote = currentNote.upOnSemitones(s);
+            this.collection.push(new Note(uppedNote.note))
+        })
     }
 
 

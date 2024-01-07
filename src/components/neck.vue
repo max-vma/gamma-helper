@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { MusicalScale } from "@/consts/musicalScales";
+import { MusicalScale } from "@/libs/MusicalScale";
 import Notes from "@/consts/notes";
 import { ScaleNames } from "@/consts/scales";
 import { GUITAR_STANDART_E } from "@/consts/tunings";
@@ -19,7 +19,7 @@ export default defineComponent({
     },
     setup() {
         const tuning = ref(GUITAR_STANDART_E);
-        const scale = ref(new MusicalScale(Notes.C, ScaleNames.NaturalMinor))
+        const scale = ref(new MusicalScale(Notes.A, ScaleNames.NaturalMinor))
         
 
         return { tuning, scale }

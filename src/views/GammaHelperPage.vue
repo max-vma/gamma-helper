@@ -9,7 +9,7 @@ import { defineComponent } from 'vue'
 import Neck from '../components/neck.vue';
 
 export default defineComponent( {
-    name: "GammaHelplerPage",
+    name: "GammaHelperPage",
     components: {
         Neck
     }

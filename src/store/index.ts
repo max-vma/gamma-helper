@@ -1,4 +1,4 @@
-import { MusicalScale } from "@/consts/musicalScales";
+import { MusicalScale } from "@/libs/MusicalScale";
 import { Tuning } from "@/consts/tunings";
 import { createStore } from "vuex";
 import actions from "./actions";
