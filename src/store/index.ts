@@ -6,7 +6,7 @@ import mutations from "./mutations";
 import state from "./state";
 
 export interface IState {
-  activeScale: MusicalScale,
+  scale: MusicalScale,
   fretsCount: number,
   tuning: Tuning
 }

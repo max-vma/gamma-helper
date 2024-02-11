@@ -1,6 +1,6 @@
-import Note from "@/libs/Note";
+import TuneNote from "./TuningNote";
 
 export default class Tuning {
-    public notes: Note[] = [];
+    public notes: TuneNote[] = [];
 
 }

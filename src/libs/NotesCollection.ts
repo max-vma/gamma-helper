@@ -1,10 +1,8 @@
+import Notes from "@/consts/notes";
 import Note from "./Note";
 
 export default class NotesCollection {
     collection: Note[] = [];
-
-    // constructor(){
-    // }
 
     public get notes (): Note[] {
         return this.collection;
@@ -13,9 +11,11 @@ export default class NotesCollection {
     public set notes (notes: Note[]) {
         this.collection = [...notes];
     }
-    public has(note: Note): boolean{
+    public has(note: Note | Notes): boolean{
+        const noteName = (note instanceof Note) ? note.note : note;
+
         return this.collection.some(n => {
-            return n.note === note.note
+            return n.note === noteName
         })
     }
     public push(note: Note): void{

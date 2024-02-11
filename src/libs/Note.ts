@@ -2,11 +2,11 @@ import Notes, {  NOTES_LAST_INDEX, Octaves } from "@/consts/notes";
 
 
 export default class Note {
-    public _note: Notes = Notes.C;
-    public _octave: Octaves | null = null;
+    private _note: Notes = Notes.C;
+    private _octave?: Octaves;
     public noteName = '';
 
-    constructor(note: Notes, octave: Octaves | null = null){
+    constructor(note: Notes, octave?: Octaves){
         this.note = note;
         this.octave = octave;
     }
@@ -20,14 +20,15 @@ export default class Note {
         return this._note;
     }
 
-    public set octave (octave: Octaves | null){
+    public set octave (octave: Octaves | undefined){
         this._octave = octave;
         this.noteName = this.getNoteName();
     }
 
-    public get octave(): Octaves | null{
+    public get octave(): Octaves | undefined{
         return this._octave;
     }
+
 
     public upOnSemitones(semiTones: number): Note{
         let currentNoteIndex: number = (this.note as number + semiTones);
@@ -37,11 +38,10 @@ export default class Note {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
         this.note = Notes[a];
-        console.log(a);
         return this;
     }
 
-    public getNoteName (noteNumber: number = this.note, octave: number | null = this.octave): string {
+    public getNoteName (noteNumber: number = this.note, octave?: Octaves): string {
 
         const noteNames = Object.keys(Notes).filter(key => isNaN(Number(key))) as Array<keyof typeof Notes>;
         const noteName = noteNames.find(name => Notes[name] === noteNumber);

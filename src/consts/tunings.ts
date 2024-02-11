@@ -1,15 +1,16 @@
 import Note from "@/libs/Note";
 import Notes, { Octaves } from "./notes";
+import TuningNote from "@/libs/TuningNote";
 
 type Tuning = Note[];
 
 const GUITAR_STANDART_E = [
-    new Note(Notes.E, Octaves.Four),
-    new Note(Notes.B, Octaves.Three),
-    new Note(Notes.G, Octaves.Three),
-    new Note(Notes.D, Octaves.Three),
-    new Note(Notes.A, Octaves.Two),
-    new Note(Notes.E, Octaves.Two),
+    new TuningNote(Notes.E, Octaves.Four),
+    new TuningNote(Notes.B, Octaves.Three),
+    new TuningNote(Notes.G, Octaves.Three),
+    new TuningNote(Notes.D, Octaves.Three),
+    new TuningNote(Notes.A, Octaves.Two),
+    new TuningNote(Notes.E, Octaves.Two),
 ];
 
 
