@@ -1,6 +1,5 @@
-import Note from "@/libs/Note";
 import Notes, { Octaves } from "./notes";
-import TuningNote from "@/libs/TuningNote";
+import { TuningNote, Note } from "@/libs";
 
 type Tuning = Note[];
 

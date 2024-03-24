@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts">
-import Note from "@/libs/Note"
 import { defineComponent, PropType, toRefs } from "vue"
 
 export default defineComponent({

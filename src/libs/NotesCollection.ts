@@ -1,7 +1,7 @@
 import Notes from "@/consts/notes";
-import Note from "./Note";
+import { Note } from "./Note";
 
-export default class NotesCollection {
+export class NotesCollection {
     collection: Note[] = [];
 
     public get notes (): Note[] {
@@ -12,12 +12,15 @@ export default class NotesCollection {
         this.collection = [...notes];
     }
     public has(note: Note | Notes): boolean{
-        const noteName = (note instanceof Note) ? note.note : note;
-
         return this.collection.some(n => {
-            return n.note === noteName
+            return n.note === this.getNote(note).note
         })
     }
+
+    protected getNote(note: Note | Notes): Note {
+        return (note instanceof Note) ? note : new Note(note);
+    }
+
     public push(note: Note): void{
         this.collection.push(note)
     }

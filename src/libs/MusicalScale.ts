@@ -1,8 +1,7 @@
-import Note from "@/libs/Note";
-import NotesCollection from "@/libs/NotesCollection";
-import Notes from "../consts/notes";
+import Notes from "@/consts/notes";
 import { ScaleNames, Scales } from "../consts/scales";
-import ScaleNote from "./ScaleNote";
+import { Note, ScaleNote } from "./index";
+import { NotesCollection } from "./NotesCollection";
 
 export class MusicalScale extends NotesCollection{
     public _tonic: Note = new Note(Notes.C);
@@ -24,10 +23,13 @@ export class MusicalScale extends NotesCollection{
         console.log(steps)
         steps.forEach((s: number, index) => {
             const uppedNote = currentNote.upOnSemitones(s);
-            this.collection.push(new ScaleNote(uppedNote.note, index + 1, uppedNote.octave))
+            this.collection.push(new ScaleNote(uppedNote, index + 1))
         })
     }
 
+    public getStepIndex(note: Note | Notes): number{
+        return this.collection.findIndex(n => n.note === this.getNote(note).note)
+    }
 
     public set scale (scale: ScaleNames){
         this._scale = scale;

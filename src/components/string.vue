@@ -9,10 +9,9 @@
 <script setup lang="ts">
 import { computed, defineProps } from 'vue';
 import NeckFret from './fret.vue';
-import Note from '@/libs/Note';
+import { Note, TuningNote, ScaleNote } from '@/libs/index';
 import { useStore } from 'vuex';
 import { IState } from '@/store';
-import TuningNote from '@/libs/TuningNote';
 
 const props = defineProps<{
     tuningNote: TuningNote
@@ -23,38 +22,21 @@ const { scale, fretsCount } = useStore<IState>().state;
 const fretsNotes = computed(():Note[] => {
     const notes: Note[] = [];
     for (let index = 0; index < fretsCount + 1; index++) {
-        if(notes.length === 0) notes.push(props.tuningNote);
-        else {
-            notes.push(notes[index - 1].getNextSemitoneNote());
+        let note = !notes.length ? props.tuningNote : notes[index - 1].getNextSemitoneNote();
+        if(scale.has(note)){
+            notes.push(new ScaleNote(note, scale.getStepIndex(note)));
+        }else{
+            notes.push(note);
         }
+        
     }
     return notes
 })
 
 
-const isActiveNote = (note: Note): boolean => scale.has(note);
+const isActiveNote = (note: Note | ScaleNote): boolean => note instanceof ScaleNote;
 
 </script>
-
-<!-- <script lang="ts">
-
-
-export default defineComponent({
-    name: 'NeckString',
-    props: {
-        tuningNote: {
-            type: TuningNote,
-            required: true,
-        },
-    },
-    components: {
-      NeckFret
-    },
-    setup(props){
-        
-    },
-})
-</script> -->
 
 <style lang="less">
 .neck__string {

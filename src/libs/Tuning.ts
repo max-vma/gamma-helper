@@ -1,6 +1,6 @@
-import TuneNote from "./TuningNote";
+import { TuningNote } from "./index";
 
-export default class Tuning {
-    public notes: TuneNote[] = [];
+export class Tuning {
+    public notes: TuningNote[] = [];
 
 }

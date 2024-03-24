@@ -1,11 +1,13 @@
 import Notes, { Octaves } from "@/consts/notes";
-import Note from "./Note";
+import { Note } from "./Note";
 
-export default class ScaleNote extends Note {
-    private _step: any;
+export class ScaleNote extends Note {
+    public _step: any;
     
-    constructor(note: Notes, step: number, octave?: Octaves){
-        super(note, octave);
+    constructor(note: Notes | Note, step: number, octave?: Octaves){
+        if(note instanceof Note) super(note.note, note.octave);
+        else super(note, octave)
+
         this.step = step;
     }
 
