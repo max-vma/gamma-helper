@@ -1,7 +1,11 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import "./registerServiceWorker";
-import router from "./router";
-import store from "./store";
+import { createApp } from 'vue'
+import ElementPlus from 'element-plus'
+import 'element-plus/theme-chalk/index.css'
+import { createPinia } from 'pinia'
 
-createApp(App).use(store).use(router).mount("#app");
+import App from './App.vue'
+import router from './router'
+
+const pinia = createPinia()
+
+createApp(App).use(router).use(ElementPlus).use(pinia).mount('#app')

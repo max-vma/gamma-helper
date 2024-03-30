@@ -1,21 +1,21 @@
-import Notes, { Octaves } from "@/consts/notes";
-import { Note } from "./Note";
+import Notes, { Octaves } from '@/consts/notes'
+import { Note } from './Note'
 
 export class ScaleNote extends Note {
-    public _step: any;
-    
-    constructor(note: Notes | Note, step: number, octave?: Octaves){
-        if(note instanceof Note) super(note.note, note.octave);
-        else super(note, octave)
+	public _step: any
 
-        this.step = step;
-    }
+	constructor(note: Notes | Note, step: number, octave?: Octaves) {
+		if (note instanceof Note) super(note.note, note.octave)
+		else super(note, octave)
 
-    public set step (step: number){
-        this._step = step;
-    }
+		this.step = step
+	}
 
-    public get step(): number{
-        return this._step;
-    }
+	public set step(step: number) {
+		this._step = step
+	}
+
+	public get step(): number {
+		return this._step
+	}
 }

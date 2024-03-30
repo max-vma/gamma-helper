@@ -1,32 +1,35 @@
-import Notes from "@/consts/notes";
-import { Note } from "./Note";
+import Notes from '@/consts/notes'
+import { Note } from './Note'
 
 export class NotesCollection {
-    collection: Note[] = [];
+	collection: Note[] = []
 
-    public get notes (): Note[] {
-        return this.collection;
-    }
+	// constructor(){
 
-    public set notes (notes: Note[]) {
-        this.collection = [...notes];
-    }
-    public has(note: Note | Notes): boolean{
-        return this.collection.some(n => {
-            return n.note === this.getNote(note).note
-        })
-    }
+	// }
+	public get notes(): Note[] {
+		return this.collection
+	}
 
-    protected getNote(note: Note | Notes): Note {
-        return (note instanceof Note) ? note : new Note(note);
-    }
+	public set notes(notes: Note[]) {
+		this.collection = [...notes]
+	}
+	public has(note: Note | Notes): boolean {
+		return this.collection.some(n => {
+			return n.note === this.getNote(note).note
+		})
+	}
 
-    public push(note: Note): void{
-        this.collection.push(note)
-    }
+	protected getNote(note: Note | Notes): Note {
+		return note instanceof Note ? note : new Note(note)
+	}
 
-    public upOnSemitones(semiTones: number): NotesCollection{
-        this.collection.forEach(note => note.upOnSemitones(semiTones))
-        return this;
-    }
+	public push(note: Note): void {
+		this.collection.push(note)
+	}
+
+	public upOnSemitones(semiTones: number): NotesCollection {
+		this.collection.forEach(note => note.upOnSemitones(semiTones))
+		return this
+	}
 }
