@@ -1,5 +1,4 @@
 import Notes, { NOTES_LAST_INDEX, Octaves } from '@/consts/notes'
-import { MusicalScale } from './MusicalScale'
 
 export class Note {
 	private _note: Notes = Notes.C
@@ -49,7 +48,7 @@ export class Note {
 		return `${noteName}${octave ? octave : ''}`
 	}
 
-	public getNextSemitoneNote(scale?: MusicalScale): Note {
+	public getNextSemitoneNote(): Note {
 		let currentNote = this.note
 		let currentOctave = this.octave
 
