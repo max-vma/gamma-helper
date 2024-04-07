@@ -1,6 +1,7 @@
-import { TuningNote } from "./index";
+import { Note, NotesCollection } from './index'
 
-export class Tuning {
-    public notes: TuningNote[] = [];
-
+export class Tuning extends NotesCollection {
+	constructor(public label: string, notes: Note[]) {
+		super(notes)
+	}
 }

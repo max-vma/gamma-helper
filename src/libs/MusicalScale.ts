@@ -20,7 +20,6 @@ export class MusicalScale extends NotesCollection {
 		this.collection.push(this.tonic)
 		const currentNote = new Note(this.tonic.note)
 
-		console.log(steps)
 		steps.forEach((s: number, index) => {
 			const uppedNote = currentNote.upOnSemitones(s)
 			this.collection.push(new ScaleNote(uppedNote, index + 1))

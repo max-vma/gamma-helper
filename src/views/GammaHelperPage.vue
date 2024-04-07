@@ -1,22 +1,13 @@
 <template>
-  <div class="gamma-helper-page">
-    <neck />
-  </div>
+	<div class="gamma-helper-page">
+		<controls />
+		<neck />
+	</div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-import Neck from '../components/neck.vue';
-
-export default defineComponent( {
-    name: "GammaHelperPage",
-    components: {
-        Neck
-    }
-})
-
+<script setup>
+import Neck from '@/components/Neck/index.vue'
+import Controls from '@/components/Controls/index.vue'
 </script>
 
-<style>
-
-</style>
+<style lang="scss"></style>

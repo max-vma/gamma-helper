@@ -4,9 +4,10 @@ import { Note } from './Note'
 export class NotesCollection {
 	collection: Note[] = []
 
-	// constructor(){
+	constructor(_notes?: Note[]) {
+		if (_notes) this.collection = [..._notes]
+	}
 
-	// }
 	public get notes(): Note[] {
 		return this.collection
 	}

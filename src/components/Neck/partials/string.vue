@@ -21,7 +21,6 @@ const props = defineProps<{
 
 const store = useNeckStore()
 
-console.log(store)
 const fretsNotes = computed((): Note[] => {
 	const notes: Note[] = []
 	for (let index = 0; index < store.fretsCount + 1; index++) {
