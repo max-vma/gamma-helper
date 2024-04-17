@@ -2,6 +2,10 @@ enum ScaleNames {
 	NaturalMinor,
 	NaturalMajor,
 }
+enum ScaleTypes {
+	Minor,
+	Major,
+}
 
 enum ToneStep {
 	T = 2,
@@ -15,8 +19,8 @@ export type TScales = {
 }
 
 const Scales: TScales = {
-	[ScaleNames.NaturalMinor]: [T, H, T, T, H, T, T],
-	[ScaleNames.NaturalMajor]: [T, T, H, T, T, T, H],
+	[ScaleTypes.Minor]: [T, H, T, T, H, T, T],
+	[ScaleTypes.Major]: [T, T, H, T, T, T, H],
 }
 
-export { ScaleNames, ToneStep, Scales }
+export { ScaleNames, ToneStep, Scales, ScaleTypes }

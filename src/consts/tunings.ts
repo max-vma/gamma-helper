@@ -11,7 +11,7 @@ export const GUITAR_STANDART_E = new Tuning('E стандарт', [
 	new Note(Notes.E, Octaves.Two),
 ])
 
-export const GUITAR_STANDART_F = new Tuning('F стандарт', [
+export const GUITAR_STANDART_F = new Tuning('F Стандарт', [
 	new Note(Notes.F, Octaves.Four),
 	new Note(Notes.C, Octaves.Four),
 	new Note(Notes['G#'], Octaves.Three),

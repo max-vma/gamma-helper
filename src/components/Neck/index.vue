@@ -2,7 +2,7 @@
 	<div class="neck">
 		<neck-string
 			v-for="(note, index) in tuningNotes"
-			:tuning-note="note"
+			:tuning-note="(note as Note)"
 			:key="index"
 		/>
 	</div>
@@ -12,13 +12,12 @@
 import { computed } from 'vue'
 import NeckString from './partials/string.vue'
 import { useNeckStore } from '@/stores/neck'
+import { Note } from '@/libs'
 const neckStore = useNeckStore()
 
 const tuningNotes = computed(() => {
-	return neckStore.tuning.collection
+	return neckStore.tuning.notes
 })
-
-console.log(neckStore)
 </script>
 
 <style lang="less">

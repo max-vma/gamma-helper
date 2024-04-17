@@ -3,6 +3,7 @@
 		<el-select
 			:model-value="tuning"
 			placeholder="Выбери строй"
+			label="Строй"
 			value-key="label"
 			size="large"
 			style="width: 240px"

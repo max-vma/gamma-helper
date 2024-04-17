@@ -2,7 +2,7 @@ import Notes from '@/consts/notes'
 import { Note } from './Note'
 
 export class NotesCollection {
-	collection: Note[] = []
+	private collection: Note[] = []
 
 	constructor(_notes?: Note[]) {
 		if (_notes) this.collection = [..._notes]

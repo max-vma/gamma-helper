@@ -1,19 +1,11 @@
 <template>
-  <gamma-helper-page />
+	<gamma-helper-page />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import GammaHelperPage from './views/GammaHelperPage.vue';
-
-export default defineComponent({
-    name: 'App',
-    components: {
-      GammaHelperPage
-    }
-})
-
-
+<script setup lang="ts">
+import { defineComponent } from 'vue'
+import GammaHelperPage from '@/views/GammaHelperPage.vue'
 </script>
 <style lang="less">
+@import 'reset-css';
 </style>

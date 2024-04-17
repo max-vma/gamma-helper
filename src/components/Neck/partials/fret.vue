@@ -3,7 +3,7 @@
 		<div
 			:class="{
 				neck__circle: true,
-				'neck__circle--active': active,
+				'neck__circle--active': props.isActive,
 			}"
 		>
 			<slot></slot>
@@ -11,21 +11,11 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent, PropType, toRefs } from 'vue'
-
-export default defineComponent({
-	name: 'NeckFret',
-	props: {
-		isActive: {
-			type: Boolean,
-		},
-	},
-	setup(props) {
-		const { isActive } = toRefs(props)
-		return { active: isActive.value }
-	},
-})
+const props = defineProps<{
+	isActive: boolean
+}>()
 </script>
 
 <style lang="less">

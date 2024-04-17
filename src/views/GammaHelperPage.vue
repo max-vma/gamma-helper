@@ -5,7 +5,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Neck from '@/components/Neck/index.vue'
 import Controls from '@/components/Controls/index.vue'
 </script>
