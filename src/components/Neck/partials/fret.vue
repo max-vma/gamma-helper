@@ -1,21 +1,44 @@
 <template>
-	<div class="neck__fret">
+	<div class="neck__fret" @mouseout="onHover" @mouseover="onHover">
 		<div
 			:class="{
 				neck__circle: true,
 				'neck__circle--active': props.isActive,
+				'neck__circle--tonic': props.isTonica,
 			}"
 		>
+			<template v-if="isFirst">
+				<div v-show="isHovered" class="neck__fret-tune neck__fret-tune--up">
+					<ArrowRight width="16px" />
+				</div>
+				<div v-show="isHovered" class="neck__fret-tune neck__fret-tune--down">
+					<ArrowLeft width="16px" />
+				</div>
+			</template>
+
 			<slot></slot>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { defineComponent, PropType, toRefs } from 'vue'
-const props = defineProps<{
+import { useHover } from '@/hooks/useHover'
+import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
+import { defineComponent, ref, toRefs } from 'vue'
+
+interface PropType {
 	isActive: boolean
-}>()
+	isTonica: boolean
+	isFirst: boolean
+}
+
+const props = withDefaults(defineProps<PropType>(), {
+	isActive: false,
+	isTonica: false,
+	isFirst: false,
+})
+
+const { onHover, isHovered } = useHover()
 </script>
 
 <style lang="less">
@@ -39,22 +62,45 @@ const props = defineProps<{
 		transform: translate(-50%, -50%);
 		border-radius: 50%;
 		&--active {
+			background-color: #616161;
+		}
+		&--tonic {
 			background-color: #ff6c5c;
 		}
-		&--red {
-			background-color: #ff6c5c;
+	}
+	&__fret-controls {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	&__fret-tune {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		left: 0;
+		right: 0;
+		border-radius: 50%;
+		background-color: #757575;
+		z-index: 10;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&--down {
+			left: calc(-16px);
+		}
+		&--up {
+			left: calc(100% - 4px);
 		}
 	}
 	&__fret {
 		flex: 4;
-		// border: 1px solid red;
 		position: relative;
-		// border-right: 4px solid #bdc3c7;
 		&:last-child {
-			flex: 1;
+			flex: 2;
 		}
 		&:first-child {
-			flex: 1;
+			flex: 2;
 		}
 		&::after {
 			content: '';

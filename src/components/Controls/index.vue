@@ -1,13 +1,11 @@
 <template>
 	<div class="controls">
-		<div class="controls__tuning">
-			<tuning-changer
-				:tunings="TUNINGS"
-				:tuning="(neckStore.tuning as Tuning)"
-				@change="neckStore.setTuning"
-			/>
+		<div class="controls__block">
+			<div class="controls__block-title">Строй инструмента</div>
+			<tuning-changer />
 		</div>
-		<div class="controls__scale">
+		<div class="controls__block">
+			<div class="controls__block-title">Звуковой ряд</div>
 			<scale-changer />
 		</div>
 	</div>
@@ -16,12 +14,6 @@
 <script setup lang="ts">
 import TuningChanger from './partials/TuningChanger.vue'
 import ScaleChanger from './partials/ScaleChanger.vue'
-import { TUNINGS } from '@/consts/tunings'
-import { Tuning } from '@/libs/Tuning'
-import { useNeckStore } from '@/stores/neck'
-import { MusicalScale } from '@/libs'
-
-const neckStore = useNeckStore()
 </script>
 
 <style lang="less">
@@ -29,5 +21,13 @@ const neckStore = useNeckStore()
 	padding: 12px;
 	display: flex;
 	gap: 12px;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	&__block-title {
+		font-size: 22px;
+		font-weight: 600;
+		text-align: center;
+		margin-bottom: 12px;
+	}
 }
 </style>

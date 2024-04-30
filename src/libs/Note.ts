@@ -28,6 +28,10 @@ export class Note {
 		return this._octave
 	}
 
+	public is(note: Note) {
+		return this.note === note.note
+	}
+
 	public upOnSemitones(semiTones: number): Note {
 		let currentNoteIndex: number = (this.note as number) + semiTones
 		if (currentNoteIndex > NOTES_LAST_INDEX)

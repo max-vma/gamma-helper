@@ -28,6 +28,11 @@ export const useNeckStore = defineStore('neck', () => {
 		setScale(new MusicalScale(tonic.value, scaleType.value))
 	}
 
+	const setScaleType = (newScaleType: ScaleTypes) => {
+		scaleType.value = newScaleType
+		setScale(new MusicalScale(tonic.value, scaleType.value))
+	}
+
 	const setScale = (newScale: MusicalScale) => {
 		scale.value = newScale
 	}
@@ -41,5 +46,6 @@ export const useNeckStore = defineStore('neck', () => {
 		tonic,
 		scaleType,
 		setTonic,
+		setScaleType,
 	}
 })

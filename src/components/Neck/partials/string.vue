@@ -1,8 +1,10 @@
 <template>
-	<div class="neck__string">
+	<div class="neck-string">
 		<neck-fret
-			v-for="note in fretsNotes"
+			v-for="(note, index) in fretsNotes"
 			:is-active="isActiveNote(note)"
+			:is-tonica="isTonica(note)"
+			:is-first="index === 0"
 			:key="note.noteName + note.octave"
 		>
 			{{ note.noteName }}{{ note.octave }}
@@ -34,17 +36,18 @@ const fretsNotes = computed((): Note[] => {
 })
 
 const isActiveNote = (note: Note | ScaleNote): boolean => {
-	console.log(store.scale.has(note), note)
 	return store.scale.has(note)
+}
+const isTonica = (note: Note | ScaleNote): boolean => {
+	return store.scale.tonic.is(note)
 }
 </script>
 
 <style lang="less">
-.neck__string {
+.neck-string {
 	display: flex;
 	width: 100%;
 	height: 40px;
 	background-color: #fff;
 }
 </style>
-@/stores
