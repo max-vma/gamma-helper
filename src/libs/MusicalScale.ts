@@ -1,5 +1,5 @@
 import Notes from '@/consts/notes'
-import { ScaleNames, ScaleTypes, Scales } from '../consts/scales'
+import { ScaleTypes, Scales } from '../consts/scales'
 import { Note, ScaleNote } from './index'
 import { NotesCollection } from './NotesCollection'
 

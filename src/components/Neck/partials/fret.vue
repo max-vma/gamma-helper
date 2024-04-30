@@ -24,7 +24,6 @@
 <script setup lang="ts">
 import { useHover } from '@/hooks/useHover'
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
-import { defineComponent, ref, toRefs } from 'vue'
 
 interface PropType {
 	isActive: boolean

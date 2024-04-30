@@ -3,7 +3,7 @@ import Notes from '@/consts/notes'
 import { ScaleTypes } from '@/consts/scales'
 import { GUITAR_STANDART_E } from '@/consts/tunings'
 import { defineStore } from 'pinia'
-import { reactive, ref, watch } from 'vue'
+import { ref } from 'vue'
 import { Tuning } from '@/libs/Tuning'
 
 export const useNeckStore = defineStore('neck', () => {

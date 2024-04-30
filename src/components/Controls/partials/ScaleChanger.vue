@@ -37,8 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { Plus, Minus } from '@element-plus/icons-vue'
-import Notes, { MAX_NOTES_COUNT } from '@/consts/notes'
+import Notes from '@/consts/notes'
 import { useNeckStore } from '@/stores/neck'
 import { getEnumEntriesKeys } from '@/utils/getEnumEntriesKeys'
 import { ScaleTypes } from '@/consts/scales'
