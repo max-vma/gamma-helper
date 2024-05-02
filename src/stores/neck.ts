@@ -5,6 +5,7 @@ import { GUITAR_STANDART_E } from '@/consts/tunings'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { Tuning } from '@/libs/Tuning'
+import { Note } from '@/libs'
 
 export const useNeckStore = defineStore('neck', () => {
 	const tonic = ref<Notes>(Notes.E)
@@ -28,6 +29,11 @@ export const useNeckStore = defineStore('neck', () => {
 		setScale(new MusicalScale(tonic.value, scaleType.value))
 	}
 
+	const setTuningStringNote = (stringIndex: number, newNote: Note) => {
+		const newTuning = tuning.value.setStringNote(stringIndex, newNote)
+		setTuning(newTuning)
+	}
+
 	const setScaleType = (newScaleType: ScaleTypes) => {
 		scaleType.value = newScaleType
 		setScale(new MusicalScale(tonic.value, scaleType.value))
@@ -47,5 +53,6 @@ export const useNeckStore = defineStore('neck', () => {
 		scaleType,
 		setTonic,
 		setScaleType,
+		setTuningStringNote,
 	}
 })

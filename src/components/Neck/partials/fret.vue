@@ -8,10 +8,18 @@
 			}"
 		>
 			<template v-if="isFirst">
-				<div v-show="isHovered" class="neck__fret-tune neck__fret-tune--up">
+				<div
+					v-show="isHovered"
+					class="neck__fret-tune neck__fret-tune--up"
+					@click="() => onChangeTuningNote(true)"
+				>
 					<ArrowRight width="16px" />
 				</div>
-				<div v-show="isHovered" class="neck__fret-tune neck__fret-tune--down">
+				<div
+					v-show="isHovered"
+					class="neck__fret-tune neck__fret-tune--down"
+					@click="() => onChangeTuningNote(false)"
+				>
 					<ArrowLeft width="16px" />
 				</div>
 			</template>
@@ -23,6 +31,7 @@
 
 <script setup lang="ts">
 import { useHover } from '@/hooks/useHover'
+import { useNeckStore } from '@/stores/neck'
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
 
 interface PropType {
@@ -37,7 +46,13 @@ const props = withDefaults(defineProps<PropType>(), {
 	isFirst: false,
 })
 
+const emit = defineEmits(['onNextNote', 'onPrevNote'])
+
 const { onHover, isHovered } = useHover()
+
+const onChangeTuningNote = (isNext: boolean) => {
+	emit(isNext ? 'onNextNote' : 'onPrevNote')
+}
 </script>
 
 <style lang="less">
@@ -60,11 +75,17 @@ const { onHover, isHovered } = useHover()
 		left: 50%;
 		transform: translate(-50%, -50%);
 		border-radius: 50%;
+		transition: 0.2s;
 		&--active {
 			background-color: #616161;
 		}
 		&--tonic {
 			background-color: #ff6c5c;
+		}
+		&:hover {
+			// scale: 1.25 1.25;
+			transform: translate(-50%, -50%) scale(1.25, 1.25);
+			transition: 0.2s;
 		}
 	}
 	&__fret-controls {

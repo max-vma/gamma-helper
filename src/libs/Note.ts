@@ -4,10 +4,13 @@ export class Note {
 	private _note: Notes = Notes.C
 	private _octave?: Octaves
 	public noteName = ''
+	public indexInCollection: number = -1
 
-	constructor(note: Notes, octave?: Octaves) {
+	constructor(note: Notes, octave?: Octaves, indexInCollection?: number) {
 		this.note = note
 		this.octave = octave
+		if (indexInCollection)
+			this.indexInCollection = indexInCollection = indexInCollection
 	}
 
 	public set note(note: Notes) {
@@ -53,15 +56,26 @@ export class Note {
 	}
 
 	public getNextSemitoneNote(): Note {
+		return this.getOtherNote(true)
+	}
+	public getOtherNote(isNext: boolean) {
 		let currentNote = this.note
 		let currentOctave = this.octave
-
-		if (currentNote + 1 > NOTES_LAST_INDEX) {
+		const nextNoteIndex = currentNote + (isNext ? 1 : -1)
+		if (nextNoteIndex > NOTES_LAST_INDEX) {
 			currentNote = Notes.C
 			currentOctave && currentOctave++
+		} else if (nextNoteIndex < 0) {
+			currentNote = Notes.B
+			currentOctave && currentOctave--
 		} else {
-			currentNote = currentNote + 1
+			currentNote = nextNoteIndex
 		}
-		return new Note(currentNote, currentOctave)
+		const newNote = new Note(currentNote, currentOctave)
+		newNote.indexInCollection = this.indexInCollection
+		return newNote
+	}
+	public getPrevSemitoneNote(): Note {
+		return this.getOtherNote(false)
 	}
 }

@@ -6,6 +6,8 @@
 			:is-tonica="isTonica(note)"
 			:is-first="index === 0"
 			:key="note.noteName + note.octave"
+			@on-next-note="() => onChangeTuningStringNote(true)"
+			@on-prev-note="() => onChangeTuningStringNote(false)"
 		>
 			{{ note.noteName }}{{ note.octave }}
 		</neck-fret>
@@ -40,6 +42,13 @@ const isActiveNote = (note: Note | ScaleNote): boolean => {
 }
 const isTonica = (note: Note | ScaleNote): boolean => {
 	return store.scale.tonic.is(note)
+}
+
+const onChangeTuningStringNote = (isNext: boolean) => {
+	store.setTuningStringNote(
+		props.tuningNote.indexInCollection,
+		props.tuningNote.getOtherNote(isNext)
+	)
 }
 </script>
 
