@@ -31,7 +31,6 @@
 
 <script setup lang="ts">
 import { useHover } from '@/hooks/useHover'
-import { useNeckStore } from '@/stores/neck'
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
 
 interface PropType {
