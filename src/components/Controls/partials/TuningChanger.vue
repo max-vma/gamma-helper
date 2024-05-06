@@ -1,9 +1,9 @@
 <template>
   <div :class="$style.tuningChanger">
-    <el-form-item label="Выберите строй инструмента">
+    <el-form-item label="Строй">
       <el-select
         :model-value="tuningStore.tuning"
-        placeholder="Выбери строй инструмента"
+        placeholder="Выберите строй"
         label="Строй"
         value-key="label"
         size="large"
