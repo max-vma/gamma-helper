@@ -1,6 +1,6 @@
 <template>
-  <div class="neck">
-    <neck-string
+  <div :class="$style.neck">
+    <guitar-neck-string
       v-for="(note, index) in tuningStore.notes"
       :tuning-note="note"
       :key="index" />
@@ -8,18 +8,15 @@
 </template>
 
 <script setup lang="ts">
-import NeckString from './partials/string.vue'
+import GuitarNeckString from './partials/GuitarNeckString.vue'
 import { useTuningStore } from '@/stores/tuning'
 const tuningStore = useTuningStore()
 </script>
 
-<style lang="less">
+<style lang="less" module>
 .neck {
   position: relative;
   width: 100%;
   padding-top: 40px;
-  &__tune-changer {
-    position: absolute;
-  }
 }
 </style>

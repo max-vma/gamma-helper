@@ -1,25 +1,25 @@
 <template>
-	<div class="gamma-helper-page">
-		<div class="gamma-helper-page__inner">
-			<controls />
-			<neck />
-		</div>
-	</div>
+  <div :class="$style.gammaHelperPage">
+    <div :class="$style.gammaHelperPageInner">
+      <controls />
+      <guitar-neck />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import Neck from '@/components/Neck/index.vue'
+import GuitarNeck from '@/components/GuitarNeck/index.vue'
 import Controls from '@/components/Controls/index.vue'
 </script>
 
-<style lang="less" scoped>
-.gamma-helper-page {
-	padding: 16px;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	&__inner {
-		min-width: 80%;
-	}
+<style lang="less" module>
+.gammaHelperPage {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.gammaHelperPageInner {
+  min-width: 80%;
 }
 </style>

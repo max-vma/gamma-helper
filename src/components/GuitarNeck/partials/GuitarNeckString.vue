@@ -1,22 +1,20 @@
 <template>
-  <div class="neck-string">
-    <neck-fret
-      v-for="(note, index) in fretsNotes"
-      :is-active="isActiveNote(note)"
-      :is-tonica="isTonica(note)"
-      :is-first="index === 0"
-      :key="note.noteName + note.octave"
-      @on-next-note="() => onChangeTuningStringNote(true)"
-      @on-prev-note="() => onChangeTuningStringNote(false)">
-      {{ note.noteName }}{{ note.octave }}
-    </neck-fret>
+  <div :class="$style.neckString">
+    <guitar-neck-fret v-for="(note, index) in fretsNotes">
+      <guitar-neck-note
+        :is-changed="index === 0"
+        :note="note"
+        :is-hidden="!hasInScale(note)"
+        :is-tonica="isTonica(note)" />
+    </guitar-neck-fret>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
-import NeckFret from './fret.vue'
-import { Note, ScaleNote } from '@/libs/index'
+import GuitarNeckFret from './GuitarNeckFret.vue'
+import GuitarNeckNote from './GuitarNeckNote.vue'
+import { Note } from '@/libs/index'
 import { useNeckStore } from '@/stores/neck'
 import { useScaleStore } from '@/stores/scale'
 import { useTuningStore } from '@/stores/tuning'
@@ -44,20 +42,21 @@ const fretsNotes = computed((): Note[] => {
   return notes
 })
 
-const isActiveNote = (note: Note | ScaleNote): boolean => {
+const hasInScale = (note: Note): boolean => {
+  // console.log(note, scaleStore.scale.notes, scaleStore.scale.has(note))
   return scaleStore.scale.has(note)
 }
-const isTonica = (note: Note | ScaleNote): boolean => {
+const isTonica = (note: Note): boolean => {
   return scaleStore.scale.tonic.is(note)
 }
 
-const onChangeTuningStringNote = (isNext: boolean) => {
-  tuningStore.setTuningStringNote(props.tuningNote.indexInCollection, props.tuningNote.getOtherNote(isNext))
-}
+// const onChangeTuningStringNote = (isNext: boolean) => {
+//   tuningStore.setTuningStringNote(props.tuningNote.indexInCollection, props.tuningNote.getOtherNote(isNext))
+// }
 </script>
 
-<style lang="less">
-.neck-string {
+<style lang="less" module>
+.neckString {
   display: flex;
   width: 100%;
   height: 40px;

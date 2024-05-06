@@ -1,5 +1,5 @@
 <template>
-  <div class="tuning-changer">
+  <div :class="$style.tuningChanger">
     <el-form-item label="Выберите строй инструмента">
       <el-select
         :model-value="tuningStore.tuning"
@@ -25,8 +25,8 @@ import { useTuningStore } from '@/stores/tuning'
 const tuningStore = useTuningStore()
 </script>
 
-<style lang="less">
-.tuning-changer {
+<style lang="less" module>
+.tuningChanger {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,5 +1,5 @@
 <template>
-  <div class="scale-changer">
+  <div :class="$style.scaleChanger">
     <el-form-item label="Выбери тонику">
       <el-select
         :model-value="scaleStore.tonic"
@@ -41,8 +41,8 @@ import { useScaleStore } from '@/stores/scale'
 const scaleStore = useScaleStore()
 </script>
 
-<style lang="less">
-.scale-changer {
+<style lang="less" module>
+.scaleChanger {
   display: flex;
   flex-direction: column;
   align-items: center;
