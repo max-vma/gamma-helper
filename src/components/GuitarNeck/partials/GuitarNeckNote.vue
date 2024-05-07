@@ -1,28 +1,32 @@
 <template>
   <div
-    v-if="!isHidden"
-    :class="[$style.note, isTonica && $style.isTonica]">
-    {{ props.note.noteName }}{{ props.note.octave }}
+    @mouseover="onHover"
+    @mouseout="onHover"
+    v-if="!isHidden || isChanged"
+    :class="[$style.note, isTonica && $style.isTonica, isHidden && $style.isHidden]">
+    <span :class="[$style.noteInner]"> {{ props.note.noteName }}{{ props.note.octave }} </span>
+
     <template v-if="isChanged">
-      <!-- <div
-          v-show="isHovered"
-          class="neck__fret-tune neck__fret-tune--up"
-          @click="() => onChangeTuningNote(true)">
-          <ArrowRight width="16px" />
-        </div>
-        <div
-          v-show="isHovered"
-          class="neck__fret-tune neck__fret-tune--down"
-          @click="() => onChangeTuningNote(false)">
-          <ArrowLeft width="16px" />
-        </div> -->
+      <div
+        @click="$emit('onNext')"
+        v-show="isHovered"
+        :class="[$style.noteTune, $style.noteTuneUp]">
+        <ArrowRight width="16px" />
+      </div>
+      <div
+        @click="$emit('onPrev')"
+        v-show="isHovered"
+        :class="[$style.noteTune, $style.noteTuneDown]">
+        <ArrowLeft width="16px" />
+      </div>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useHover } from '@/hooks/useHover'
 import { Note } from '@/libs'
-
+import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
 interface PropTypes {
   note: Note
   isTonica?: boolean
@@ -34,6 +38,12 @@ const props = withDefaults(defineProps<PropTypes>(), {
   isChanged: false,
   isHidden: false,
 })
+
+const emit = defineEmits<{
+  (e: 'onPrev'): void
+  (e: 'onNext'): void
+}>()
+const { isHovered, onHover } = useHover()
 </script>
 
 <style lang="less" module>
@@ -59,41 +69,59 @@ const props = withDefaults(defineProps<PropTypes>(), {
   transition: 0.2s;
   // opacity: 1;
 
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 100%;
+  }
   &:hover {
     // scale: 1.25 1.25;
     transform: translate(-50%, -50%) scale(1.15, 1.15);
     transition: 0.2s;
   }
 }
+.noteTune {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  background-color: #757575;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  &:hover {
+    transform: scale(1.1, 1.1);
+    transition: 0.2s;
+  }
+  &:active {
+    transform: scale(1.05, 1.05);
+    transition: 0.2s;
+  }
+}
+.noteTuneUp {
+  left: calc(100% - 4px);
+}
+.noteTuneDown {
+  left: calc(-16px);
+}
 .isTonica {
   background-color: #ff6c5c;
 }
 
-// .neck {
-//   &__fret-controls {
-//     position: absolute;
-//     left: 0;
-//     top: 0;
-//   }
-//   &__fret-tune {
-//     position: absolute;
-//     width: 20px;
-//     height: 20px;
-//     left: 0;
-//     right: 0;
-//     border-radius: 50%;
-//     background-color: #757575;
-//     z-index: 10;
-//     cursor: pointer;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     &--down {
-//       left: calc(-16px);
-//     }
-//     &--up {
-//       left: calc(100% - 4px);
-//     }
-//   }
-// }
+.isHidden {
+  background-color: #e0e0e0;
+
+  .noteInner {
+    color: #616161;
+  }
+}
 </style>

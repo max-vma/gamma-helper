@@ -54,12 +54,12 @@ export const GUITAR_OPEN_C = new Tuning('Open C', [
 ])
 
 export enum TuningNames {
-  'GUITAR_DROP_D',
   'GUITAR_STANDART_E',
+  'GUITAR_DROP_D',
   'GUITAR_DROP_C',
-  'GUITAR_DOUBLE_DROP_D',
   'GUITAR_OPEN_D',
   'GUITAR_OPEN_C',
+  'GUITAR_DOUBLE_DROP_D',
 }
 
 export type TTunings = {

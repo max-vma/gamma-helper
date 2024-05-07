@@ -5,7 +5,9 @@
         :is-changed="index === 0"
         :note="note"
         :is-hidden="!hasInScale(note)"
-        :is-tonica="isTonica(note)" />
+        :is-tonica="isTonica(note)"
+        @on-next="() => onChangeTuningStringNote(true)"
+        @on-prev="() => onChangeTuningStringNote(false)" />
     </guitar-neck-fret>
   </div>
 </template>
@@ -50,9 +52,9 @@ const isTonica = (note: Note): boolean => {
   return scaleStore.scale.tonic.is(note)
 }
 
-// const onChangeTuningStringNote = (isNext: boolean) => {
-//   tuningStore.setTuningStringNote(props.tuningNote.indexInCollection, props.tuningNote.getOtherNote(isNext))
-// }
+const onChangeTuningStringNote = (isNext: boolean) => {
+  tuningStore.setTuningStringNote(props.tuningNote.indexInCollection, props.tuningNote.getOtherNote(isNext))
+}
 </script>
 
 <style lang="less" module>
