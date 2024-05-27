@@ -9,7 +9,7 @@ export class Note {
   constructor(note: Notes, octave?: Octaves, indexInCollection?: number) {
     this.note = note
     this.octave = octave
-    if (indexInCollection) this.indexInCollection = indexInCollection = indexInCollection
+    if (indexInCollection) this.indexInCollection = indexInCollection
   }
 
   public set note(note: Notes) {
