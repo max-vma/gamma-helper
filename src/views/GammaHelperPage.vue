@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.gammaHelperPage">
     <div :class="$style.gammaHelperPageInner">
-      <controls />
-      <guitar-neck />
+      <Controls />
+      <GuitarNeck />
     </div>
   </div>
 </template>

@@ -1,21 +1,22 @@
 <template>
   <div :class="$style.scaleChanger">
-    <el-form-item label="Выбери тонику">
-      <el-select
+    <ElFormItem label="Выбери тонику">
+      <ElSelect
         :model-value="scaleStore.tonic"
         placeholder="Выбери тонику"
         value-key="label"
         size="large"
         style="width: 240px"
         @change="scaleStore.setTonic">
-        <el-option
+        <ElOption
           v-for="[key, item] in getEnumEntriesKeys(Notes)"
           :label="key"
           :value="item" />
-      </el-select>
-    </el-form-item>
-    <el-form-item label="Выберите Тип">
-      <el-select
+      </ElSelect>
+    </ElFormItem>
+
+    <ElFormItem label="Выберите Тип">
+      <ElSelect
         :model-value="scaleStore.type"
         placeholder="Выбери тип"
         label="Строй"
@@ -23,12 +24,12 @@
         size="large"
         style="width: 240px"
         @change="scaleStore.setType">
-        <el-option
+        <ElOption
           v-for="[key, item] in getEnumEntriesKeys(ScaleTypes)"
           :label="key"
           :value="item" />
-      </el-select>
-    </el-form-item>
+      </ElSelect>
+    </ElFormItem>
   </div>
 </template>
 

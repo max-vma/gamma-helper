@@ -13,6 +13,7 @@
         :class="[$style.noteTune, $style.noteTuneUp]">
         <ArrowRight width="16px" />
       </div>
+
       <div
         @click="$emit('onPrev')"
         v-show="isHovered"
@@ -27,6 +28,7 @@
 import { useHover } from '@/hooks/useHover'
 import { Note } from '@/libs'
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
+
 interface PropTypes {
   note: Note
   isTonica?: boolean
@@ -78,12 +80,14 @@ const { isHovered, onHover } = useHover()
     width: 200%;
     height: 100%;
   }
+
   &:hover {
     // scale: 1.25 1.25;
     transform: translate(-50%, -50%) scale(1.15, 1.15);
     transition: 0.2s;
   }
 }
+
 .noteTune {
   position: absolute;
   width: 20px;
@@ -98,10 +102,12 @@ const { isHovered, onHover } = useHover()
   align-items: center;
   justify-content: center;
   transition: 0.2s;
+
   &:hover {
     transform: scale(1.1, 1.1);
     transition: 0.2s;
   }
+
   &:active {
     transform: scale(1.05, 1.05);
     transition: 0.2s;

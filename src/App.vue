@@ -1,5 +1,5 @@
 <template>
-	<gamma-helper-page />
+  <GammaHelperPage />
 </template>
 
 <script setup lang="ts">
@@ -8,8 +8,8 @@ import GammaHelperPage from '@/views/GammaHelperPage.vue'
 <style lang="less">
 @import 'reset-css';
 #app {
-	height: 100vh;
-	overflow: hidden;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.tuningChanger">
-    <el-form-item label="Строй">
-      <el-select
+    <ElFormItem label="Строй">
+      <ElSelect
         :model-value="tuningStore.tuning"
         placeholder="Выберите строй"
         label="Строй"
@@ -9,12 +9,12 @@
         size="large"
         style="width: 240px"
         @change="tuningStore.setTuning">
-        <el-option
+        <ElOption
           v-for="item in TUNINGS"
           :label="item.label"
           :value="item" />
-      </el-select>
-    </el-form-item>
+      </ElSelect>
+    </ElFormItem>
   </div>
 </template>
 

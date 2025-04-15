@@ -2,11 +2,12 @@
   <div :class="$style.controls">
     <div :class="$style.controlsBlock">
       <div :class="$style.controlsBlockTitle">Строй инструмента</div>
-      <tuning-changer />
+      <TuningChanger />
     </div>
+
     <div :class="$style.controlsBlock">
       <div :class="$style.controlsBlockTitle">Звуковой ряд</div>
-      <scale-changer />
+      <ScaleChanger />
     </div>
   </div>
 </template>

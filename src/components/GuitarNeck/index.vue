@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.neck">
-    <guitar-neck-string
+    <GuitarNeckString
       v-for="(note, index) in tuningStore.notes"
-      :tuning-note="note"
+      :tuningNote="note"
       :key="index" />
   </div>
 </template>

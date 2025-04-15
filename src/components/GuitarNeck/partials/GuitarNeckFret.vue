@@ -13,9 +13,11 @@
   &:last-child {
     flex: 2;
   }
+
   &:first-child {
     flex: 2;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -25,6 +27,7 @@
     background-color: #7b7b7b;
     border-radius: 2px;
   }
+
   &::before {
     content: '';
     position: absolute;
