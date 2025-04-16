@@ -25,7 +25,7 @@
         style="width: 240px"
         @change="scaleStore.setType">
         <ElOption
-          v-for="[key, item] in getEnumEntriesKeys(ScaleTypes)"
+          v-for="[key, item] in getEnumEntriesKeys(ScaleNames)"
           :label="key"
           :value="item" />
       </ElSelect>
@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { NoteNames, ScaleTypes } from '@/entities';
+import { NoteNames, ScaleNames } from '@/entities';
 import { getEnumEntriesKeys } from '@/shared';
 import { useScaleStore } from '@/stores/scale';
 
