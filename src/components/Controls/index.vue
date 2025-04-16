@@ -25,8 +25,11 @@ import ScaleChanger from './partials/ScaleChanger.vue'
   justify-content: space-around;
   flex-wrap: wrap;
 }
-// .controlsBlock {
-// }
+
+.controlsBlock {
+  width: 100%;
+}
+
 .controlsBlockTitle {
   font-size: 22px;
   font-weight: 600;
