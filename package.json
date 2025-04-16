@@ -13,6 +13,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@vueuse/core": "^13.1.0",
     "element-plus": "^2.6.3",
     "pinia": "^2.1.7",
     "reset-css": "^5.0.2",
