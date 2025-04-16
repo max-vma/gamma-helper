@@ -19,10 +19,10 @@
 </template>
 
 <script setup lang="ts">
-import { TUNINGS } from '@/consts/tunings'
-import { useTuningStore } from '@/stores/tuning'
+import { TUNINGS } from '@/entities';
+import { useTuningStore } from '@/stores/tuning';
 
-const tuningStore = useTuningStore()
+const tuningStore = useTuningStore();
 </script>
 
 <style lang="less" module>

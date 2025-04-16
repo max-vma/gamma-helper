@@ -1,7 +1,19 @@
+enum NoteNames {
+  'C',
+  'C#',
+  'D',
+  'D#',
+  'E',
+  'F',
+  'F#',
+  'G',
+  'G#',
+  'A',
+  'A#',
+  'B',
+}
 
-enum Notes { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", };
-
-enum Octaves {
+enum OctaveNames {
   Minus1 = -1,
   Zero = 0,
   One = 1,
@@ -15,12 +27,7 @@ enum Octaves {
   Nine = 9,
 }
 
-
 const MAX_NOTES_COUNT = 12;
 const NOTES_LAST_INDEX = 11;
 
-
-
-export { Octaves, MAX_NOTES_COUNT, NOTES_LAST_INDEX }
-
-export default Notes
+export { MAX_NOTES_COUNT, NOTES_LAST_INDEX, NoteNames, OctaveNames };

@@ -13,42 +13,41 @@
 </template>
 
 <script setup lang="ts">
-import GuitarNeckFret from './GuitarNeckFret.vue'
-import { FretNote } from '@/entities'
-import { Note } from '@/libs/index'
-import { useNeckStore } from '@/stores/neck'
-import { useScaleStore } from '@/stores/scale'
-import { useTuningStore } from '@/stores/tuning'
-import { computed } from 'vue'
+import GuitarNeckFret from '@/components/GuitarNeck/partials/GuitarNeckFret.vue';
+import { FretNote, Note } from '@/entities';
+import { useNeckStore } from '@/stores/neck';
+import { useScaleStore } from '@/stores/scale';
+import { useTuningStore } from '@/stores/tuning';
+import { computed } from 'vue';
 
 const props = defineProps<{
-  tuningNote: Note
-}>()
+  tuningNote: Note;
+}>();
 
-const scaleStore = useScaleStore()
-const tuningStore = useTuningStore()
-const neckStore = useNeckStore()
+const scaleStore = useScaleStore();
+const tuningStore = useTuningStore();
+const neckStore = useNeckStore();
 
 const fretsNotes = computed((): Note[] => {
-  const notes: Note[] = []
+  const notes: Note[] = [];
   for (let index = 0; index < neckStore.fretsCount + 1; index++) {
-    let note = !notes.length ? props.tuningNote : notes[index - 1].getNextSemitoneNote()
+    let note = !notes.length ? props.tuningNote : notes[index - 1].getNextSemitoneNote();
 
-    notes.push(note)
+    notes.push(note);
   }
-  return notes
-})
+  return notes;
+});
 
 function hasInScale(note: Note): boolean {
   // console.log(note, scaleStore.scale.notes, scaleStore.scale.has(note))
-  return scaleStore.scale.has(note)
+  return scaleStore.scale.has(note);
 }
 function isTonic(note: Note): boolean {
-  return scaleStore.scale.tonic.is(note)
+  return scaleStore.scale.tonic.is(note);
 }
 
 function onChangeTuningStringNote(isNext: boolean) {
-  tuningStore.setTuningStringNote(props.tuningNote.indexInCollection, props.tuningNote.getOtherNote(isNext))
+  tuningStore.setTuningStringNote(props.tuningNote.indexInCollection, props.tuningNote.getOtherNote(isNext));
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.scaleChanger">
+  <div :class="$style['scale-changer']">
     <ElFormItem label="Выбери тонику">
       <ElSelect
         :model-value="scaleStore.tonic"
@@ -9,7 +9,7 @@
         style="width: 240px"
         @change="scaleStore.setTonic">
         <ElOption
-          v-for="[key, item] in getEnumEntriesKeys(Notes)"
+          v-for="[key, item] in getEnumEntriesKeys(NoteNames)"
           :label="key"
           :value="item" />
       </ElSelect>
@@ -34,16 +34,15 @@
 </template>
 
 <script setup lang="ts">
-import Notes from '@/consts/notes';
+import { NoteNames, ScaleTypes } from '@/entities';
 import { getEnumEntriesKeys } from '@/shared';
-import { ScaleTypes } from '@/consts/scales';
 import { useScaleStore } from '@/stores/scale';
 
 const scaleStore = useScaleStore();
 </script>
 
 <style lang="less" module>
-.scaleChanger {
+.scale-changer {
   display: flex;
   flex-direction: column;
   align-items: center;

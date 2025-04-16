@@ -10,7 +10,8 @@
     "test": "jest",
     "sb": "storybook",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "ts": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@vueuse/core": "^13.1.0",

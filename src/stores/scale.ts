@@ -1,29 +1,27 @@
-import Notes from '@/consts/notes'
-import { ScaleTypes } from '@/consts/scales'
-import { MusicalScale } from '@/libs'
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { MusicalScale, NoteNames, ScaleTypes } from '@/entities';
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
 export const useScaleStore = defineStore('scale', () => {
-  const tonic = ref<Notes>(Notes.E)
+  const tonic = ref<NoteNames>(NoteNames.E);
 
-  const type = ref<ScaleTypes>(ScaleTypes.Minor)
+  const type = ref<ScaleTypes>(ScaleTypes.Minor);
 
-  const scale = ref<MusicalScale>(new MusicalScale(tonic.value, { type: type.value }))
+  const scale = ref<MusicalScale>(new MusicalScale(tonic.value, { type: type.value }));
 
-  const setTonic = (newTonic: Notes) => {
-    tonic.value = newTonic
-    setScale(new MusicalScale(tonic.value, { type: type.value }))
-  }
+  const setTonic = (newTonic: NoteNames) => {
+    tonic.value = newTonic;
+    setScale(new MusicalScale(tonic.value, { type: type.value }));
+  };
 
   const setScale = (newScale: MusicalScale) => {
-    scale.value = newScale
-  }
+    scale.value = newScale;
+  };
 
   const setType = (newScaleType: ScaleTypes) => {
-    type.value = newScaleType
-    setScale(new MusicalScale(tonic.value, { type: type.value }))
-  }
+    type.value = newScaleType;
+    setScale(new MusicalScale(tonic.value, { type: type.value }));
+  };
 
   return {
     tonic,
@@ -31,5 +29,5 @@ export const useScaleStore = defineStore('scale', () => {
     type,
     setTonic,
     setType,
-  }
-})
+  };
+});

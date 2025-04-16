@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style['gamma-helper-page']">
-    <div :class="$style['gamma-helper-page-inner']">
+  <div :class="$style['fretboard-scales-page']">
+    <div :class="$style['fretboard-scales-page-inner']">
       <Controls />
       <GuitarNeck />
     </div>
@@ -10,19 +10,19 @@
 <script setup lang="ts">
 import GuitarNeck from '@/components/GuitarNeck/index.vue';
 import Controls from '@/components/Controls/index.vue';
-import { useHead } from '@vueuse/head';
+import { useTitle } from '@vueuse/core';
 
-useHead;
+useTitle('Визуализатор музыкальных гамм для струнных инструментов');
 </script>
 
 <style lang="less" module>
-.gamma-helper-page {
+.fretboard-scales-page {
   padding: 16px;
   height: 100%;
   display: flex;
   justify-content: center;
 }
-.gamma-helper-page-inner {
+.fretboard-scales-page-inner {
   min-width: 80%;
 }
 </style>

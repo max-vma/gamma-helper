@@ -1,6 +1,4 @@
 {
-  "plugins": ["prettier-plugin-organize-imports"],
-  "organizeImportsSkipDestructiveCodeActions": true,
   "semi": true,
   "singleQuote": true,
   "arrowParens": "avoid",

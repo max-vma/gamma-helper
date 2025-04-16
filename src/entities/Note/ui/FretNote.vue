@@ -1,7 +1,6 @@
 <template>
   <div
-    @mouseover="onHover"
-    @mouseout="onHover"
+    ref="fret-note-element"
     v-if="!isHidden || isZeroFret"
     :class="{
       [$style.note]: true,
@@ -30,9 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import { useHover } from '@/shared';
-import { Note } from '@/libs';
+import { Note } from '@/entities/Note/model';
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue';
+import { useElementHover } from '@vueuse/core';
+import { useTemplateRef } from 'vue';
 
 interface PropTypes {
   note: Note;
@@ -50,7 +50,10 @@ defineEmits<{
   (e: 'prev'): void;
   (e: 'next'): void;
 }>();
-const { isHovered, onHover } = useHover();
+
+const fretNoteElementRef = useTemplateRef('fret-note-element');
+
+const isHovered = useElementHover(fretNoteElementRef);
 </script>
 
 <style lang="less" module>
