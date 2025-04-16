@@ -2,12 +2,12 @@
   <div :class="$style.neckString">
     <GuitarNeckFret v-for="(note, index) in fretsNotes">
       <GuitarNeckNote
-        :isChanged="index === 0"
+        :isZeroFret="index === 0"
         :note="note"
         :isHidden="!hasInScale(note)"
-        :isTonica="isTonica(note)"
-        @onNext="() => onChangeTuningStringNote(true)"
-        @onPrev="() => onChangeTuningStringNote(false)" />
+        :isTonic="isTonic(note)"
+        @next="() => onChangeTuningStringNote(true)"
+        @prev="() => onChangeTuningStringNote(false)" />
     </GuitarNeckFret>
   </div>
 </template>
@@ -43,7 +43,7 @@ function hasInScale(note: Note): boolean {
   // console.log(note, scaleStore.scale.notes, scaleStore.scale.has(note))
   return scaleStore.scale.has(note)
 }
-function isTonica(note: Note): boolean {
+function isTonic(note: Note): boolean {
   return scaleStore.scale.tonic.is(note)
 }
 

@@ -2,20 +2,25 @@
   <div
     @mouseover="onHover"
     @mouseout="onHover"
-    v-if="!isHidden || isChanged"
-    :class="[$style.note, isTonica && $style.isTonica, isHidden && $style.isHidden]">
+    v-if="!isHidden || isZeroFret"
+    :class="{
+      [$style.note]: true,
+      [$style.isZeroFret]: isZeroFret,
+      [$style.isTonic]: isTonic,
+      [$style.isHidden]: isHidden,
+    }">
     <span :class="[$style.noteInner]"> {{ props.note.noteName }}{{ props.note.octave }} </span>
 
-    <template v-if="isChanged">
+    <template v-if="isZeroFret">
       <div
-        @click="$emit('onNext')"
+        @click="$emit('next')"
         v-show="isHovered"
         :class="[$style.noteTune, $style.noteTuneUp]">
         <ArrowRight width="16px" />
       </div>
 
       <div
-        @click="$emit('onPrev')"
+        @click="$emit('prev')"
         v-show="isHovered"
         :class="[$style.noteTune, $style.noteTuneDown]">
         <ArrowLeft width="16px" />
@@ -31,19 +36,19 @@ import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
 
 interface PropTypes {
   note: Note
-  isTonica?: boolean
-  isChanged?: boolean
+  isTonic?: boolean
+  isZeroFret?: boolean
   isHidden?: boolean
 }
 const props = withDefaults(defineProps<PropTypes>(), {
-  isTonica: false,
-  isChanged: false,
+  isTonic: false,
+  isZeroFret: false,
   isHidden: false,
 })
 
-const emit = defineEmits<{
-  (e: 'onPrev'): void
-  (e: 'onNext'): void
+defineEmits<{
+  (e: 'prev'): void
+  (e: 'next'): void
 }>()
 const { isHovered, onHover } = useHover()
 </script>
@@ -88,6 +93,10 @@ const { isHovered, onHover } = useHover()
   }
 }
 
+.isZeroFret {
+  z-index: 3;
+}
+
 .noteTune {
   position: absolute;
   width: 20px;
@@ -96,7 +105,7 @@ const { isHovered, onHover } = useHover()
   right: 0;
   border-radius: 50%;
   background-color: #757575;
-  z-index: 10;
+  z-index: 1000;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -119,7 +128,7 @@ const { isHovered, onHover } = useHover()
 .noteTuneDown {
   left: calc(-16px);
 }
-.isTonica {
+.isTonic {
   background-color: #ff6c5c;
 }
 

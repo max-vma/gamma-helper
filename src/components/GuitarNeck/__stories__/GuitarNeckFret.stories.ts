@@ -20,7 +20,7 @@ const note = new Note(Notes.C, Octaves.Three)
 
 NoteActive.args = {
   note,
-  isTonica: true,
+  isTonic: true,
 }
 
 export const GNoteChanged: StoryFn<typeof GuitarNeckNote> = args => ({
@@ -33,5 +33,5 @@ export const GNoteChanged: StoryFn<typeof GuitarNeckNote> = args => ({
 
 GNoteChanged.args = {
   note,
-  isChanged: true,
+  isZeroFret: true,
 }
