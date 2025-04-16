@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.neckFret">
+  <div :class="$style['neck-fret']">
     <slot></slot>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script setup lang="ts"></script>
 
 <style lang="less" module>
-.neckFret {
+.neck-fret {
   flex: 4;
   position: relative;
   &:last-child {
