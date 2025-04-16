@@ -1,16 +1,16 @@
 import { Note, NoteCollection, NoteNames } from '@/entities/Note';
-import { Scales, ScaleTypes } from '@/entities/Scale/consts';
+import { Scales, ScaleNames } from '@/entities/Scale/consts';
 import { ScaleNote } from '@/entities/Scale/model/ScaleNote';
 
 interface MusicalScaleCreateConfig {
   from?: Note;
   to?: Note;
-  type?: ScaleTypes;
+  type?: ScaleNames;
 }
 
 export class MusicalScale extends NoteCollection {
   private _tonic: Note = new Note(NoteNames.C);
-  private _type: ScaleTypes = ScaleTypes.Minor;
+  private _type: ScaleNames = ScaleNames.NaturalMinor;
 
   constructor(tonic?: NoteNames | null, createConfig?: MusicalScaleCreateConfig) {
     super();
@@ -48,11 +48,11 @@ export class MusicalScale extends NoteCollection {
     return this.notes.findIndex(n => n.note === this.getNote(note).note);
   }
 
-  public set type(scale: ScaleTypes) {
+  public set type(scale: ScaleNames) {
     this._type = scale;
   }
 
-  public get type(): ScaleTypes {
+  public get type(): ScaleNames {
     return this._type;
   }
 
