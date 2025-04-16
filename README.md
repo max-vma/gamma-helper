@@ -1,4 +1,6 @@
-## Music Utils
+# Music Utils
+
+## [DEMO](https://max-vma.github.io/music-utils/)
 
 ## 1.Guitar Scale Visualizer
 
