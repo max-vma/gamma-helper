@@ -34,12 +34,12 @@
 </template>
 
 <script setup lang="ts">
-import Notes from '@/consts/notes'
-import { getEnumEntriesKeys } from '@/utils/getEnumEntriesKeys'
-import { ScaleTypes } from '@/consts/scales'
-import { useScaleStore } from '@/stores/scale'
+import Notes from '@/consts/notes';
+import { getEnumEntriesKeys } from '@/shared';
+import { ScaleTypes } from '@/consts/scales';
+import { useScaleStore } from '@/stores/scale';
 
-const scaleStore = useScaleStore()
+const scaleStore = useScaleStore();
 </script>
 
 <style lang="less" module>

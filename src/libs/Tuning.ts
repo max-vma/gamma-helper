@@ -1,6 +1,6 @@
-import { Note, NotesCollection } from './index'
+import { Note, NoteCollection } from './index'
 
-export class Tuning extends NotesCollection {
+export class Tuning extends NoteCollection {
   constructor(
     public label: string,
     notes: Note[],

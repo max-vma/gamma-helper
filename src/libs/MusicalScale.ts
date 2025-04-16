@@ -1,6 +1,6 @@
 import Notes from '@/consts/notes'
 import { ScaleTypes, Scales } from '../consts/scales'
-import { NotesCollection } from './NotesCollection'
+import { NoteCollection } from '../entities/note/model/NoteCollection'
 import { Note, ScaleNote } from './index'
 
 interface MusicalScaleCreateConfig {
@@ -8,7 +8,7 @@ interface MusicalScaleCreateConfig {
   to?: Note
   type?: ScaleTypes
 }
-export class MusicalScale extends NotesCollection {
+export class MusicalScale extends NoteCollection {
   private _tonic: Note = new Note(Notes.C)
   private _type: ScaleTypes = ScaleTypes.Minor
 

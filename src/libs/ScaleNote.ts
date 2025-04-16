@@ -1,5 +1,5 @@
 import Notes, { Octaves } from '@/consts/notes'
-import { Note } from './Note'
+import { Note } from '../entities/note/model/Note'
 
 export class ScaleNote extends Note {
   public _step: any

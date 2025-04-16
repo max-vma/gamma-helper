@@ -30,27 +30,27 @@
 </template>
 
 <script setup lang="ts">
-import { useHover } from '@/hooks/useHover'
-import { Note } from '@/libs'
-import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue'
+import { useHover } from '@/shared';
+import { Note } from '@/libs';
+import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue';
 
 interface PropTypes {
-  note: Note
-  isTonic?: boolean
-  isZeroFret?: boolean
-  isHidden?: boolean
+  note: Note;
+  isTonic?: boolean;
+  isZeroFret?: boolean;
+  isHidden?: boolean;
 }
 const props = withDefaults(defineProps<PropTypes>(), {
   isTonic: false,
   isZeroFret: false,
   isHidden: false,
-})
+});
 
 defineEmits<{
-  (e: 'prev'): void
-  (e: 'next'): void
-}>()
-const { isHovered, onHover } = useHover()
+  (e: 'prev'): void;
+  (e: 'next'): void;
+}>();
+const { isHovered, onHover } = useHover();
 </script>
 
 <style lang="less" module>

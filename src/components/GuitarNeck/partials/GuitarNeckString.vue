@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.neckString">
     <GuitarNeckFret v-for="(note, index) in fretsNotes">
-      <GuitarNeckNote
+      <FretNote
         :isZeroFret="index === 0"
         :note="note"
         :isHidden="!hasInScale(note)"
@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import GuitarNeckFret from './GuitarNeckFret.vue'
-import GuitarNeckNote from './GuitarNeckNote.vue'
+import { FretNote } from '@/entities'
 import { Note } from '@/libs/index'
 import { useNeckStore } from '@/stores/neck'
 import { useScaleStore } from '@/stores/scale'

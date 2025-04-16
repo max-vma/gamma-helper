@@ -1,4 +1,4 @@
+export { Note } from '../entities/note/model/Note'
+export { NoteCollection } from '../entities/note/model/NoteCollection'
 export { MusicalScale } from './MusicalScale'
-export { Note } from './Note'
-export { NotesCollection } from './NotesCollection'
 export { ScaleNote } from './ScaleNote'

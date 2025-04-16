@@ -1,9 +1,9 @@
 <template>
-  <GammaHelperPage />
+  <FretboardScales />
 </template>
 
 <script setup lang="ts">
-import GammaHelperPage from '@/views/GammaHelperPage.vue'
+import FretboardScales from '@/pages/FretboardScales.vue';
 </script>
 <style lang="less">
 @import 'reset-css';

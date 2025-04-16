@@ -1,7 +1,7 @@
 import Notes from '@/consts/notes'
 import { Note } from './Note'
 
-export class NotesCollection {
+export class NoteCollection {
   private collection: Note[] = []
 
   constructor(_notes?: Note[]) {
@@ -15,6 +15,7 @@ export class NotesCollection {
   public set notes(notes: Note[]) {
     this.collection = [...notes]
   }
+
   public has(note: Note | Notes, onlyNotes?: boolean): boolean {
     return this.collection.some(n => n.is(note, onlyNotes))
   }
@@ -23,11 +24,11 @@ export class NotesCollection {
     return note instanceof Note ? note : new Note(note)
   }
 
-  public push(note: Note): void {
-    this.collection.push(note)
+  public push(note: Note | Notes): void {
+    this.collection.push(this.getNote(note))
   }
 
-  public upOnSemitones(semiTones: number): NotesCollection {
+  public upOnSemitones(semiTones: number): NoteCollection {
     this.collection.forEach(note => note.upOnSemitones(semiTones))
     return this
   }

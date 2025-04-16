@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
-import { NotesCollection } from './../NotesCollection'
+import { NoteCollection } from '../../entities/note/model/NoteCollection'
 
-test('Тестирование класса NotesCollection', () => {
-	const collection = new NotesCollection()
+test('Тестирование класса NoteCollection', () => {
+  const collection = new NoteCollection()
 
-	expect(collection.notes).toEqual([])
+  expect(collection.notes).toEqual([])
 })
