@@ -1,8 +1,6 @@
 # Music Utils
 
-## [DEMO](https://max-vma.github.io/music-utils/)
-
-## 1.Guitar Scale Visualizer
+## 1. [Guitar Scale Visualizer](https://max-vma.github.io/music-utils/)
 
 Инструмент для визуализации музыкальных гамм на гитарном грифе
 
